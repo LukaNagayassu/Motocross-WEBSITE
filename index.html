@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    
+    <header class="header">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#mercurio">MERCÚRIO</a></li>
+                <li><a href="#venus">VÊNUS</a></li>
+                <li><a href="">TERRA</a></li>
+                <li><a href="">MARTE</a></li>
+                <li><a href="">HOME</a></li>
+                <li><a href="">JÚPITER</a></li>
+                <li><a href="">SATURNO</a></li>
+                <li><a href="">URANO</a></li>
+                <li><a href="">NETUNO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="content">
+            <div id="tituloLEGAL">
+                
+                <p>Bora encarar uma <br>aventura?</p>
+        
+            </div>
+
+        </div>
+
+
+
+    </section>
+    <div class="soundwave"></div>
+    <div id="tituloLEGAL">
+        <h1>VIAGEM INTERESTELAR</h1>
+
+    </div>
+    <div class="card1">
+        
+        <div class="img-viagem"><img src="./img/viagem.png" id=""></div>
+        <div class="text-viagem">
+            <p>Já imaginou viajar para outros planetas, além da Terra?<br>
+                A viagem interplanetária é uma jornada única, onde você pode explorar <br>
+                Marte, caminhar sob os anéis de Saturno ou ver o céu de Vênus de perto. <br>
+                Cada planeta oferece um mistério a ser desvendado, paisagens nunca antes<br>
+                vistas e uma experiência que vai além da imaginação. O universo está lá <br>
+                fora, esperando para ser explorado. A aventura interplanetária é a próxima <br>
+                grande fronteira — você está pronto para desbravá-la?</p>
+        </div>
+    </div>
+    <section class="heroII">
+
+        <div class="nuvem">
+
+        </div>
+
+        <div class="space">
+            <img src="./img/foguete.png" alt="foguete" class="foguete">
+            <section class="mercurio" id="mercurio">
+                <img src="./img/mercurio.png" alt="">
+                <div class="text-viagem">
+                    <h1>VIAGEM INTERESTELAR</h1>
+                    <p>Mercúrio, o planeta mais próximo do Sol, é um mundo de extremos. <br>
+                        Com temperaturas variando entre -180°C à noite e 430°C durante o dia, <br>
+                        ele desafia qualquer ideia de conforto. Sua superfície, cheia de crateras, <br>
+                        lembra a da Lua, e seus dias são mais longos que seus anos. <br>
+                        Mercúrio não tem atmosfera para proteger da radiação solar, <br>
+                        tornando-o um planeta hostil. Porém, sua proximidade com o Sol <br>
+                        e seu mistério aguardam quem se atrever a explorar. O que mais <br>
+                        poderia esconder esse pequeno gigante?</p>
+
+                </div>
+            </section>
+            <div class="galaxia1">
+                <h1>VOCÊ JA CHEGOU MUITO LONGE!!! CUIDADO AO NAVEGAR</h1>
+                <img src="./img/viajante.png" id="imagem1">
+            </div>
+            
+            <section class="venus" id="venus">
+                <div class="text-viagem">
+                <p>Vênus, o planeta mais brilhante do céu noturno, esconde um ambiente extremo. <br>
+                    Com temperaturas que ultrapassam 460°C, é ainda mais quente que Mercúrio. <br>
+                    Sua densa atmosfera de dióxido de carbono cria um efeito estufa devastador, <br>
+                    e seus ventos ácidos varrem a superfície inóspita. <br>
+                    Apesar disso, Vênus fascina por sua semelhança em tamanho e composição com a Terra. <br>
+                    Explorar Vênus é como visitar um espelho distorcido do nosso próprio planeta, <br>
+                    um lembrete poderoso dos mistérios e perigos que existem no universo. <br>
+                    Quem ousará enfrentar esse mundo incandescente?</p>
+                </div>
+
+                <img src="./img/venus.png" alt="venus">
+           
+            </section>
+
+
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+
+<script>
+    // Armazena a posição anterior da rolagem
+    var lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    // Função para ocultar ou mostrar o cabeçalho com base no movimento de rolagem
+    window.addEventListener('scroll', function () {
+        var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScrollTop) {
+            // Rolando para baixo, esconde o cabeçalho
+            header.style.top = "-100px"; // Ajuste o valor conforme necessário para o tamanho do seu cabeçalho
+        } else {
+            // Rolando para cima, mostra o cabeçalho
+            header.style.top = "0";
+        }
+
+        // Atualiza a posição anterior da rolagem
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+</script>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".foguete", {
+        y: "400vh", // quanto o foguete vai "viajar" pra baixo
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".terra", // começa a contar a partir do primeiro planeta
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1, // deixa o movimento suave, controlado pela rolagem
+            pin: false, // não prende a tela
+        }
+    });
+</script>
+<script>
+    window.addEventListener('scroll', () => {
+        const foguete = document.querySelector('.foguete');
+        const scrollTop = window.scrollY;
+
+        // Atualiza a posição vertical do foguete
+        foguete.style.top = 10 + (scrollTop * 0.15) + "px";
+    });
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
